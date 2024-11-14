@@ -1,4 +1,7 @@
+#ifndef _STACK_H_
+#define _STACK_H_
 
+#include "vector.h"
 
 
 class Stack : private Vector {
@@ -13,3 +16,4 @@ class Stack : private Vector {
 		bool IsEmpty() const;
 };
 
+#endif  // _STACK_H_

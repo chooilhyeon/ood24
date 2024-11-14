@@ -1,4 +1,7 @@
+#ifndef _QUEUE_H_
+#define _QUEUE_H_
 
+#include "list.h"
 
 
 class Queue : private List {
@@ -12,3 +15,4 @@ class Queue : private List {
 		bool IsEmpty() const;
 };
 
+#endif  // _QUEUE_H_

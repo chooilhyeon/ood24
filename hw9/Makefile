@@ -1,5 +1,5 @@
 #TODO: Set your googletest directory path
-GTEST_DIR = /Users/chu-ilhyeon/ood24/googletest-main/googletest
+GTEST_DIR = C:\Users\ilhyeonchu\Documents\GitHub\ood24\googletest-main\googletest
 
 CC=clang++
 CPPFLAGS += -isystem $(GTEST_DIR)/include
@@ -10,10 +10,10 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
 
 #TODO: Set your executable target
-all : hw2
+all : hw9
 
 #TODO: Change 'hw2.cc' and 'util.o' to your main source file and util target respectively
-hw2: hw2.cc util.o 
+hw9: hw9.cc util.o 
 	$(CC) --std=c++17 $^ -o $@
 
 #TODO: Change 'util.h' and 'util.cc' to your source files
