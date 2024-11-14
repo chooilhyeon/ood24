@@ -1,5 +1,5 @@
 #TODO: Set your googletest directory path
-GTEST_DIR = /Users/chu-ilhyeon/ood24/googletest-main/googletest
+GTEST_DIR = C:\Users\ilhyeonchu\Documents\GitHub\ood24\googletest-main\googletest
 
 CC=clang++
 CPPFLAGS += -isystem $(GTEST_DIR)/include
