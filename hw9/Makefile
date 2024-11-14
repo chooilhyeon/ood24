@@ -1,5 +1,5 @@
 #TODO: Set your googletest directory path
-GTEST_DIR = C:\Users\ilhyeonchu\Documents\GitHub\ood24\googletest-main\googletest
+GTEST_DIR = /Users/chu-ilhyeon/ood24/googletest-main/googletest
 
 CC=clang++
 CPPFLAGS += -isystem $(GTEST_DIR)/include
@@ -9,30 +9,33 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 
 GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
 
-#TODO: Set your executable target
 all : hw9
 
-#TODO: Change 'hw2.cc' and 'util.o' to your main source file and util target respectively
-hw9: hw9.cc util.o 
+hw9: hw9.cc vector.o list.o stack.o queue.o
 	$(CC) --std=c++17 $^ -o $@
 
-#TODO: Change 'util.h' and 'util.cc' to your source files
-util.o : util.cc
-	$(CC) --std=c++17 -c $^ -o $@
+vector.o : vector.cc
+	$(CC) --std=c++17 -c $< -o $@
 
-#TODO: Change 'util_test.cc' to your test file
+list.o : list.cc
+	$(CC) --std=c++17 -c $< -o $@
+
+stack.o : stack.cc
+	$(CC) --std=c++17 -c $< -o $@
+
+queue.o : queue.cc
+	$(CC) --std=c++17 -c $< -o $@
+
 test.o : test.cc $(GTEST_HEADERS)
 	$(CC) $(CPPFLAGS) $(CXXFLAGS) --std=c++17 -c $< -o $@
 
-#TODO: Change 'util_test.o'and 'util.o' to your object targets
-test: test.o util.o gtest_main.a
+test: test.o vector.o list.o stack.o queue.o gtest_main.a
 	$(CC) $(CPPFLAGS) $(CXXFLAGS) --std=c++17 $^ -o $@
 
-#TODO: Change 'main' and 'main_test' to your executable and test respectively
 clean:
-	 rm -f gtest.a gtest_main.a *.o hw2 test
+	rm -f gtest.a gtest_main.a *.o hw9 test
 
-gtest-all.o: $(GTEST_SRCS_) 
+gtest-all.o: $(GTEST_SRCS_)
 	$(CC) $(CPPFLAGS) -I$(GTEST_DIR) $(CXXFLAGS) --std=c++17 -c\
 		$(GTEST_DIR)/src/gtest-all.cc
 

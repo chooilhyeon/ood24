@@ -1,19 +1,21 @@
 #ifndef _LIST_H_
-#define _List_H_
+#define _LIST_H_
 
+#include <cassert>
+#include <cstddef>
 
 class List {
  public:
 List();
-List(List& list);
+List(const List& list);
 virtual ~List();
-void operator=(List& list);
+void operator=(const List& list);
 int size() const;
 void PushBack(int elem);
 void PushFront(int elem);
 void PopBack();
 void PopFront();
-int& At(int index);
+int& At(int index) const;
 bool IsEmpty() const;
  private:
 struct Elem {

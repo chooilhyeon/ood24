@@ -13,7 +13,7 @@ int Stack::size() const {
 }
 
 int Stack::capacity() const {
-    return Vector::capacity(); 
+    return Vector::capacity();
 }
 
 void Stack::Push(int elem) {
@@ -21,8 +21,8 @@ void Stack::Push(int elem) {
 }
 
 int Stack::Pop() {
-    assert(!IsEmpty() && "Stack is empty");
-    int value = Vector::At(size() - 1);
+    assert(!IsEmpty() && "Out-of-bound");
+    int value = Vector::operator[](size() - 1);
     Vector::PopBack();
     return value;
 }

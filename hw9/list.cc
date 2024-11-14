@@ -6,7 +6,7 @@ List::List() {
     head = nullptr;
 }
 
-List::List(List& list) {
+List::List(const List& list) {
     size_ = 0;
     head = nullptr;
     for (int i = 0; i < list.size_; i++) {
@@ -20,11 +20,15 @@ List::~List() {
     }
 }
 
-void List::operator=(List& list) {
+void List::operator=(const List& list) {
+    if (this == &list) {
+        return;
+    }
+
     while (!IsEmpty()) {
         PopFront();
     }
-    
+
     for (int i = 0; i < list.size_; i++) {
         PushBack(list.At(i));
     }
@@ -34,13 +38,13 @@ int List::size() const {
     return size_;
 }
 
-int& List::At(int index) {
+int& List::At(int index) const {
     assert(index >= 0 && index < size_ && "Out-of-bound");
-    
-    if (index == 0) {
-        return head->value;
+    Elem* current = head;
+    for (int i = 0; i < index; ++i) {
+        current = current->next;
     }
-    return At(index).value;
+    return current->value;
 }
 
 bool List::IsEmpty() const {
@@ -68,7 +72,7 @@ void List::PushFront(int elem) {
 }
 
 void List::PopBack() {
-    assert(!IsEmpty() && "Out-of_bound");
+    assert(!IsEmpty() && "Out-of-bound");
     if (size_ == 1) {
         delete head;
         head = nullptr;
@@ -85,7 +89,7 @@ void List::PopBack() {
 }
 
 void List::PopFront() {
-    assert(!IsEmpty() && "Out-of_bound");
+    assert(!IsEmpty() && "Out-of-bound");
     Elem* temp = head;
     head = head->next;
     delete temp;

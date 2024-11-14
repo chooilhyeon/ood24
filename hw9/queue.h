@@ -5,14 +5,14 @@
 
 
 class Queue : private List {
-	public:
-		Queue();
-		Queue(Queue& queue);
-		void operator=(Queue& queue);
-		int size() const;
-		void Add(int elem);
-		int Poll();
-		bool IsEmpty() const;
+ public:
+Queue();
+Queue(const Queue& queue);
+void operator=(const Queue& queue);
+int size() const;
+void Add(int elem);
+int Poll();
+bool IsEmpty() const;
 };
 
 #endif  // _QUEUE_H_
