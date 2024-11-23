@@ -8,8 +8,8 @@ size_ = 0;
 }
 
 Vector::Vector(const Vector& vector) {
-capacity_ = vector.capacity();
-elements_ = new int[vector.capacity()];
+    capacity_ = vector.capacity();
+  elements_ = new int[vector.capacity()];
 size_ = vector.size();
 
 for (int i = 0 ; i < vector.size() ; i++) {
