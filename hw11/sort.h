@@ -3,53 +3,56 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 
 template <typename T, typename N>
-void Sort(typename T::iterator begin, typename T::iterator end) {
+void Sort(typename T::iterator begin, typename T::iterator end, N compare) {
 	if(begin == end) {
 		return;
 	}
-	if(N(begin, ++begin)) {
-		std::swap(begin, --begin);
+	for (typename T::iterator i = begin; i != end; i++) {
+		for (typename T::iterator j = i; j != end; j++) {
+			if(compare(*i, *j)) {
+				std::swap(*i, *j);
+			}
+		}
 	}
-	Sort<T, N>(++begin, end);
 }
 
 template <typename T, typename N>
-void SortAndPrint(T* container) {
-	for (int n : *container) {
+std::string SortAndPrint(T* container, N compare) {
+	std::string result;
+	for (auto n : *container) {
 		std::cout << n << ' ';
+		result += n + ' ';
 	}
 	std::cout << "-> ";
+	result += "-> ";
 
-	Sort<T, N>(container->begin(), container->end());
+	Sort<T, N>(container->begin(), container->end(), compare);
 
-	for(int n : *container) {
+	for(auto n : *container) {
 		std::cout << n << ' ';
+		result += n + ' ';
 	}
 	std::cout << std::endl;
+	return result;
 }
 
-class IntIncreasingOrder{
+template <typename T>
+class IncreasingOrder{
 	public:
-	int operator()(const int& x, const int& y) {
-		if(x > y) {
-			return 1;
-		} else {
-			return 0;
-		}
+	bool operator()(const T& x, const T& y) {
+		return x > y;
 	}
 };
 
-class IntDecreasingOrder{
+template <typename T>
+class DecreasingOrder{
 	public:
-	int operator()(const int& x, const int& y) {
-		if(x < y) {
-			return 1;
-		} else {
-			return 0;
-		}
+	bool operator()(const T& x, const T& y) {
+		return x < y;
 	}
 };
 

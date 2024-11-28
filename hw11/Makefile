@@ -11,7 +11,7 @@ GTEST_SRCS_ = $(GTEST_DIR)/src/*.cc $(GTEST_DIR)/src/*.h $(GTEST_HEADERS)
 
 all : hw11
 
-hw11: hw11.cc vector.o list.o stack.o queue.o
+hw11: hw11.cc sort.o #vector.o list.o stack.o queue.o
 	$(CC) --std=c++17 $^ -o $@
 
 vector.o : vector.cc
@@ -26,10 +26,13 @@ stack.o : stack.cc
 queue.o : queue.cc
 	$(CC) --std=c++17 -c $< -o $@
 
+sort.o : sort.cc
+	$(CC) --std=c++17 -c $< -o $@
+
 test.o : test.cc $(GTEST_HEADERS)
 	$(CC) $(CPPFLAGS) $(CXXFLAGS) --std=c++17 -c $< -o $@
 
-test: test.o vector.o list.o stack.o queue.o gtest_main.a
+test: test.o sort.o gtest_main.a #vector.o list.o stack.o queue.o gtest_main.a
 	$(CC) $(CPPFLAGS) $(CXXFLAGS) --std=c++17 $^ -o $@
 
 clean:

@@ -59,7 +59,8 @@
         "variant": "cpp",
         "vector": "cpp",
         "algorithm": "cpp",
-        "cassert": "cpp"
+        "cassert": "cpp",
+        "list": "cpp"
     },
     "cmake.options.statusBarVisibility": "visible",
     "cmake.sourceDirectory": "/Users/chu-ilhyeon/ood24/googletest-main"
